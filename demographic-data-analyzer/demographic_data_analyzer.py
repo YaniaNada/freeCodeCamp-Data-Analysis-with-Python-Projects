@@ -3,7 +3,7 @@ from collections import Counter
 
 def calculate_demographic_data(print_data=True):
     # Read data from file
-    dataframe = pd.read_csv('demographic-data-analyzer\adult_data.csv')
+    dataframe = pd.read_csv('demographic-data-analyzer/adult_data.csv')
     df = pd.DataFrame(dataframe)
 
     # How many of each race are represented in this dataset? This should be a Pandas series with race names as the index labels.
@@ -11,20 +11,20 @@ def calculate_demographic_data(print_data=True):
     race_count = pd.Series(race_count_dict)
 
     # What is the average age of men?
-    average_age_men = df['age'].mean()
+    average_age_men = round(df['age'].mean(),1)
 
     # What is the percentage of people who have a Bachelor's degree?
-    percentage_bachelors = ((df[df['education'] == 'Bachelors'].shape[0])/df['education'].shape[0])*100
+    percentage_bachelors = round(((df[df['education'] == 'Bachelors'].shape[0])/df['education'].shape[0])*100,1)
 
     # What percentage of people with advanced education (`Bachelors`, `Masters`, or `Doctorate`) make more than 50K?
     # What percentage of people without advanced education make more than 50K?
 
     # with and without `Bachelors`, `Masters`, or `Doctorate`
     filtered_df = df[(df['salary']== '>50K') & ((df['education']== 'Bachelors') | (df['education']== 'Masters') | (df['education']== 'Doctorate'))]
-    higher_education_rich = (filtered_df.shape[0]/df['education'].shape[0])*100
+    higher_education_rich = round((filtered_df.shape[0]/df['education'].shape[0])*100, 1)
     
     filtered_df = df[(df['salary']== '>50K') & ((df['education']!= 'Bachelors') | (df['education']!= 'Masters') | (df['education']!= 'Doctorate'))]
-    lower_education_rich =(filtered_df.shape[0]/df['education'].shape[0])*100
+    lower_education_rich =round((filtered_df.shape[0]/df['education'].shape[0])*100, 1)
 
     # percentage with salary >50K
     higher_education = df[(df['education'] == 'Bachelors') | (df['education'] == "Masters") | (df['education'] == "Doctorate")].shape[0]
@@ -44,7 +44,7 @@ def calculate_demographic_data(print_data=True):
     count_total = df['native-country'].value_counts()
     percentage_high_salary = (count_temp_df/count_total)*100
     highest_earning_country = percentage_high_salary.idxmax()
-    highest_earning_country_percentage = percentage_high_salary.max()
+    highest_earning_country_percentage = round(percentage_high_salary.max(),1)
 
     # Identify the most popular occupation for those who earn >50K in India.
     df_IN = temp_df[(temp_df['native-country'] == 'India')]
