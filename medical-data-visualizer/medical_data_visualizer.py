@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 1
-dataframe = pd.read_csv('medical_examination.csv')
+dataframe = pd.read_csv('medical-data-visualizer/medical_examination.csv')
 df = pd.DataFrame(dataframe)
 
 # 2
