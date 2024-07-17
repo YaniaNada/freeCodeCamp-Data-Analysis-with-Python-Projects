@@ -10,6 +10,7 @@ df = pd.DataFrame(dataframe)
 # 2
 df['BMI'] = df['weight'] / ((df['height']/100)**2)
 df['overweight'] = df['BMI'].apply(lambda x: 1 if x > 25 else 0)
+df = df.drop(columns= ['BMI'])
 
 # 3
 # '0' = Good, '1' = Bad
@@ -38,23 +39,27 @@ def draw_cat_plot():
 # 10
 def draw_heat_map():
     # 11
-    df_heat = None
+    df_heat = df[(df['ap_lo'] <= df['ap_hi'])]
+    df_heat = df_heat[(df_heat['height'] >= df_heat['height'].quantile(0.025))]
+    df_heat = df_heat[(df_heat['height'] <= df_heat['height'].quantile(0.975))]
+    df_heat = df_heat[(df_heat['weight'] >= df_heat['weight'].quantile(0.025))]
+    df_heat = df_heat[(df_heat['weight'] <= df_heat['weight'].quantile(0.975))]
 
     # 12
-    corr = None
+    corr = round(df_heat.corr(),1)
 
     # 13
-    mask = None
-
-
+    mask = np.triu(np.ones_like(corr, dtype=bool))
 
     # 14
-    fig, ax = None
+    fig, ax = plt.subplots()
+    ax.plot()
 
     # 15
-
-
-
+    sns.heatmap(corr, annot=True, mask=mask, cmap='icefire')
+    plt.tight_layout()
+    plt.show()
+    fig = sns.heatmap(corr, annot=True, mask=mask, cmap='icefire')
     # 16
     fig.savefig('heatmap.png')
     return fig
