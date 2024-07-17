@@ -58,8 +58,7 @@ def draw_heat_map():
     # 15
     sns.heatmap(corr, annot=True, mask=mask, cmap='icefire')
     plt.tight_layout()
-    plt.show()
-    fig = sns.heatmap(corr, annot=True, mask=mask, cmap='icefire')
+    
     # 16
     fig.savefig('heatmap.png')
     return fig
