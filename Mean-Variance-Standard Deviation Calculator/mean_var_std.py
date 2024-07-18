@@ -1,6 +1,8 @@
 import numpy as np
 
 def calculate(list):
+    if len(list) != 9:
+        raise ValueError("List must contain nine numbers.")
     calculations = dict()
     array_arg=np.array(list)
     matrix_arg= array_arg.reshape(3,3)
@@ -28,4 +30,5 @@ def calculate(list):
     calculations['max'] = [max_a1.tolist(), max_a2.tolist(), max_flattened.tolist()]
     calculations['min'] = [min_a1.tolist(), min_a2.tolist(), min_flattened.tolist()]
     calculations['sum'] = [sum_a1.tolist(), sum_a2.tolist(), sum_flattened.tolist()]
+
     return calculations
