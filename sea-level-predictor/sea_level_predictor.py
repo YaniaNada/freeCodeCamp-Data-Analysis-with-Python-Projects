@@ -21,8 +21,8 @@ def draw_plot():
     predicted_sea_level_rise = slope * future_years + intercept
 
     plt.figure(figsize= (14,6))
-    plt.scatter(data=df, x='Year', y='CSIRO Adjusted Sea Level', color='blue', label='Observed data')
-    plt.plot(future_years, predicted_sea_level_rise, color= 'red', label='Line of best fit')
+    plt.scatter(data=df, x='Year', y='CSIRO Adjusted Sea Level', color='blue')
+    plt.plot(future_years, predicted_sea_level_rise, color= 'red')
   
 
     # Create second line of best fit
@@ -38,8 +38,8 @@ def draw_plot():
 
     predicted_sea_level_rise= slope*future_years + intercept
 
-    plt.scatter(filtered_df['Year'], filtered_df['CSIRO Adjusted Sea Level'], color='blue', label='Observed data')
-    plt.plot(future_years, predicted_sea_level_rise, color='green', label='Second line of best fit (2000 onwards)')
+    plt.scatter(filtered_df['Year'], filtered_df['CSIRO Adjusted Sea Level'], color='blue')
+    plt.plot(future_years, predicted_sea_level_rise, color='orange')
 
     # Add labels and title
     plt.xlabel('Year')
