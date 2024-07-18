@@ -10,9 +10,7 @@ def draw_plot():
     # Create scatter plot
     plt.figure(figsize= (14,6))
     plt.scatter(data=df, x='Year', y='CSIRO Adjusted Sea Level')
-    plt.xlabel('Year')
-    plt.ylabel('Sea Level (inches)')
-    plt.title("Rise in Sea Level")
+
 
     # Create first line of best fit
     result= linregress(df['Year'],df['CSIRO Adjusted Sea Level'])
@@ -25,9 +23,7 @@ def draw_plot():
     plt.figure(figsize= (14,6))
     plt.scatter(data=df, x='Year', y='CSIRO Adjusted Sea Level', color='blue', label='Observed data')
     plt.plot(future_years, predicted_sea_level_rise, color= 'red', label='Line of best fit')
-    plt.xlabel('Year')
-    plt.ylabel('Sea Level (inches)')
-    plt.title("Rise in Sea Level")    
+  
 
     # Create second line of best fit
     filtered_df= df[df['Year']>= 2000]
