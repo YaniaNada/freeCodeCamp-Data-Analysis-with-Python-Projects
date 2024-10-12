@@ -1,0 +1,6 @@
+# Ignore system files
+desktop.ini
+
+# Ignore Python bytecode files
+.pyc
+_pycache_
