@@ -1,3 +1,3 @@
 # Page View Time Series Visualizer
 
-Instructions for building your project can be found at https://www.freecodecamp.org/learn/data-analysis-with-python/data-analysis-with-python-projects/page-view-time-series-visualizer
+Visualized time series data (website page views) using Pandas, Matplotlib, and Seaborn to understand patterns in visits and identify yearly and monthly growth.
